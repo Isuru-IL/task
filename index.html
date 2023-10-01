@@ -34,15 +34,25 @@
     let display=document.querySelector("#display");
     let inputField=document.querySelector("#txt");
 
+    let currentNum
     let numberChange
+
+    inputField.addEventListener("keyup", function (){
+        currentNum=parseInt(inputField.value);
+    });
 
     btnStart.addEventListener("click",function (){
 
-        display.innerText=inputField.value;
+        if(isNaN(currentNum)){
+            currentNum=0;
+            display.innerText=currentNum;
+        }else {
+            display.innerText=currentNum;
+        }
 
         //should start increment
         numberChange=setInterval(function (){
-                            inputField.value=parseInt(display.innerText)+1;
+                            currentNum=parseInt(display.innerText)+1;
                             display.innerText=parseInt(display.innerText)+1;
                         },300);
 
@@ -53,12 +63,12 @@
     });
 
     btnMinus.addEventListener("click", function (){
-        inputField.value=parseInt(display.innerText)-1;
+        currentNum=parseInt(display.innerText)-1;
         display.innerText=parseInt(display.innerText)-1;
     });
 
     btnIncrement.addEventListener("click", function (){
-        inputField.value=parseInt(display.innerText)+1;
+        currentNum=parseInt(display.innerText)+1;
         display.innerText=parseInt(display.innerText)+1;
     });
 
